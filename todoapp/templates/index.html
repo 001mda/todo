@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <a href="/add">Add New Task</a>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {% if task.is_completed %}
+                <s>{{ task.title }}</s>
+            {% else %}
+                {{ task.title }}
+                <a href="/complete/{{ task.id }}">Mark as Completed</a>
+            {% endif %}
+            <a href="/delete/{{ task.id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
